@@ -1,9 +1,11 @@
 from ModelUsuario import ModelUsuario
+from ControlLivro import ControlLivro
 
 class ControlUsuario:
     # Método Construtor
     def __init__(self):
         self.model = ModelUsuario()
+        self.cLivro = ControlLivro()
         self.opcao = -1
         self.nome = ""
         self.endereco = ""
@@ -40,11 +42,10 @@ class ControlUsuario:
                            "\nLogin: ")
 
         self.senha = input("Senha: ")
-        if(self.model.usuarioExistente(self.login, self.senha) == True):
-            print("Login realizado com sucesso")
-        else:
+        if(self.model.usuarioExistente(self.login, self.senha) != True):
             print("Login e senha não válidos")
-
+        else:
+            self.cLivro.menuLivroCompleto()
 
     def menuCadastro(self):
         self.nome = input("Bem-vindo a nossa Livraria, " +
