@@ -1,6 +1,9 @@
+from ModelLivro import ModelLivro
+
 class ControlLivro:
     # Método Construtor
     def __init__(self):
+        self.model = ModelLivro()
         self.opcao = -1
 
     def menuLivro(self):
@@ -14,10 +17,11 @@ class ControlLivro:
             self.menuLivro()
             if (self.opcao == 0):
                 print("Saindo...")
+                self.opcao = -1
                 break
             elif (self.opcao == 1):
-                print("Compra realizada")
+                print(self.model.realizarCompra(self.opcao))
             elif (self.opcao == 2):
-                print("Compra realizada")
+                print(self.model.realizarCompra(self.opcao))
             else:
                 print("A opção escolhida não é válida")

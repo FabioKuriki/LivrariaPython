@@ -19,8 +19,10 @@ class ModelUsuario:
 
         return "Cadastro realizado com sucesso!!"
 
+    # Verificar se os dados foram cadastrados e guardados nas listas
     def consultarCadastros(self):
-        return self.dtNascimento
+        return f"{self.nome}\n{self.endereco}\n{self.telefone}\n{self.dtNascimento}\n{self.login}\n{self.senha}"
+
 
     def verificarLogin(self, login):
         for i in range(0, len(self.login), 1):
@@ -35,3 +37,6 @@ class ModelUsuario:
                 return True
 
         return False
+
+
+

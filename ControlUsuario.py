@@ -53,17 +53,44 @@ class ControlUsuario:
                           "\nNome: ")
 
         self.endereco = input("Endereço: ")
-        self.telefone = int(input("Telefone: "))
-        if(self.dia < 1 or self.dia > 31):
-            self.dia = int(input("Data de Nascimento" +
-                         "\nDia: "))
-        if(self.mes < 1 or self.mes > 12):
-            self.mes = int(input("Mês: "))
-        if(self.ano < 1):
-            self.ano = int(input("Ano: "))
+        self.validarNum(self.telefone, "Telefone: ")
+        print("Data de Nascimento")
+        self.validarData(self.telefone, 1, 31, "Dia: ")
+        self.validarData(self.telefone, 1, 12, "Mês: ")
+        self.validarAno(self.telefone, 0,  "Ano: ")
         self.login = input("Login: ")
         while(self.model.verificarLogin(self.login) != False):
             self.login = input("Login já existente em sistema, por favor informe outro: ")
         self.senha = input("Senha: ")
 
         print(self.model.realizarCadastro(self.nome, self.endereco, self.telefone, self.dia, self.mes, self.ano, self.login, self.senha))
+
+
+    def validarData(self, variavel, num1, num2, mensagem):
+        try:
+            variavel = int(input(f"{mensagem}"))
+            while(variavel < num1 or variavel > num2):
+                if(variavel < num1 or variavel > num2):
+                    print(f"Informe um valor entre {num1} e {num2}")
+                    variavel = int(input(f"{mensagem}"))
+        except ValueError:
+            print("Informe um valor númerico")
+            self.validarNum(variavel, mensagem)
+
+    def validarAno(self, variavel, num1, mensagem):
+        try:
+            variavel = int(input(f"{mensagem}"))
+            while(variavel < num1):
+                if(variavel < num1 ):
+                    print(f"Informe um valor maior ou igual a {num1}")
+                    variavel = int(input(f"{mensagem}"))
+        except ValueError:
+            print("Informe um valor númerico")
+            self.validarNum(variavel, mensagem)
+
+    def validarNum(self, variavel, mensagem):
+        try:
+            variavel = int(input(f"{mensagem}"))
+        except ValueError:
+            print("Informe um valor númerico")
+            self.validarNum(variavel, mensagem)
