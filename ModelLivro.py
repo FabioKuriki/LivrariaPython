@@ -1,3 +1,4 @@
+
 class ModelLivro:
     def __init__(self):
         self.codigo = [0, 1]
@@ -9,9 +10,9 @@ class ModelLivro:
     def realizarCompra(self, opcao):
         if(self.quantidade[opcao - 1] > 0):
             self.quantidade[opcao - 1] = self.quantidade[opcao - 1] - 1
-            return "Compra realizada com sucesso!!"
+            return True
         else:
-            return "Livro indisponível"
+            return False
 
 
 

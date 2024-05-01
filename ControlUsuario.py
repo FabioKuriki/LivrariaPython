@@ -7,6 +7,7 @@ class ControlUsuario:
         self.model = ModelUsuario()
         self.cLivro = ControlLivro()
         self.opcao = -1
+        self.opcao2 = -1
         self.nome = ""
         self.endereco = ""
         self.telefone = 0
@@ -23,7 +24,7 @@ class ControlUsuario:
                                "\n2. Cadastro" +
                                "\nEscolha uma das opções acima: "))
 
-    def menuUsuario(self):
+    def menuAcesso(self):
         while(self.opcao != 0):
             self.menu()
             if(self.opcao == 0):
@@ -45,7 +46,10 @@ class ControlUsuario:
         if(self.model.usuarioExistente(self.login, self.senha) != True):
             print("Login e senha não válidos")
         else:
-            self.cLivro.menuLivroCompleto()
+            self.opcao2 = -1
+            self.cLivro.loginAtual = self.login
+            self.menuUsuarioCompleto()
+
 
     def menuCadastro(self):
         self.nome = input("Bem-vindo a nossa Livraria, " +
@@ -94,3 +98,24 @@ class ControlUsuario:
         except ValueError:
             print("Informe um valor númerico")
             self.validarNum(variavel, mensagem)
+
+    def menuUsuario(self):
+        self.opcao2 = int(input("\n\n0. Sair" +
+                               "\n1. Ver livros" +
+                               "\n2. Consultar compras" +
+                               "\n3. Consultar reservas" +
+                               "\nO que você gostaria de fazer? "))
+
+    def menuUsuarioCompleto(self):
+        while(self.opcao2 != 0):
+            self.menuUsuario()
+            if(self.opcao2 == 0):
+                print("Saindo...")
+            elif(self.opcao2 == 1):
+                self.cLivro.menuLivroCompleto()
+            elif(self.opcao2 == 2):
+                print(self.cLivro.cCompra.model.verCompra(self.login)) #Não está funcionando no momento(ARRUMAR)
+            elif(self.opcao2 == 3):
+                print(self.cLivro.cReserva.model.verReserva(self.login))
+            else:
+                print("Selecione uma opção válida!!!")

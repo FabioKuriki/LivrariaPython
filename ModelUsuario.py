@@ -21,7 +21,7 @@ class ModelUsuario:
 
     # Verificar se os dados foram cadastrados e guardados nas listas
     def consultarCadastros(self):
-        return f"{self.nome}\n{self.endereco}\n{self.telefone}\n{self.dtNascimento}\n{self.login}\n{self.senha}"
+        return f"Nome: {self.nome}\nEndereço: {self.endereco}\nTelefone: {self.telefone}\nData de Nascimento:{self.dtNascimento}\nLogin: {self.login}\nSenha: {self.senha}"
 
 
     def verificarLogin(self, login):
