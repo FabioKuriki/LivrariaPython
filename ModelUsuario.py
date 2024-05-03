@@ -38,5 +38,10 @@ class ModelUsuario:
 
         return False
 
+    def usuarioAtual(self, loginAtual):
+        for i in range(len(self.login)):
+            if(loginAtual == self.login[i]):
+                return self.nome[i]
+
 
 

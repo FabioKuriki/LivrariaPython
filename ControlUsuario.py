@@ -100,11 +100,12 @@ class ControlUsuario:
             self.validarNum(variavel, mensagem)
 
     def menuUsuario(self):
-        self.opcao2 = int(input("\n\n0. Sair" +
-                               "\n1. Ver livros" +
-                               "\n2. Consultar compras" +
-                               "\n3. Consultar reservas" +
-                               "\nO que você gostaria de fazer? "))
+        self.opcao2 = int(input(f"\n\nBem vindo {self.model.usuarioAtual(self.login)}" +
+                                "\n0. Sair" +
+                                "\n1. Ver livros" +
+                                "\n2. Consultar compras" +
+                                "\n3. Consultar reservas" +
+                                "\nO que você gostaria de fazer? "))
 
     def menuUsuarioCompleto(self):
         while(self.opcao2 != 0):

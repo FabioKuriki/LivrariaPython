@@ -13,7 +13,7 @@ class ModelCompra:
         self.i += 1
 
     def verCompra(self, loginAtual):
-        for i in range(len(self.compraTotal)):
+        for i in range(len(self.codigoCompra)):
             if(loginAtual == self.login[i]):
                 self.compraTotal += f"\nCódigo da compra: {self.codigoCompra[i]}\nCódigo do Livro: {self.codigoLivro[i]}\nLogin: {self.login[i]}\n\n"
 
